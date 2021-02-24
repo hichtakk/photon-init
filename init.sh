@@ -43,3 +43,6 @@ cat <<EOF > /etc/docker/daemon.json
 }
 EOF
 systemctl start docker
+
+# install packages
+tdnf install -y sudo git
