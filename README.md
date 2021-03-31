@@ -4,6 +4,8 @@
 
 disable dhcp
 ```
+# /etc/systemd/network/99-dhcp-en.network 
+
 [Match]
 Name=e*
 
@@ -14,6 +16,8 @@ IPv6AcceptRA=no
 
 configure static network
 ```
+# /etc/systemd/network/10-static-en.network
+
 [Match]
 Name=eth0
 
