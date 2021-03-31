@@ -29,6 +29,7 @@ if [ "${DISTRIB_RELEASE}" != "4.0" ]; then
 fi
 
 # add admin user
+echo "Create user ${DEFAULT_USER}"
 useradd -m -G sudo,docker ${DEFAULT_USER}
 passwd ${DEFAULT_USER}
 
