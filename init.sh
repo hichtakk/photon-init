@@ -28,10 +28,14 @@ if [ "${DISTRIB_RELEASE}" != "4.0" ]; then
     exit 1
 fi
 
+# disable password expiration
+passwd -x -1 root
+
 # add admin user
 echo "Create user ${DEFAULT_USER}"
 useradd -m -G sudo,docker ${DEFAULT_USER}
 passwd ${DEFAULT_USER}
+passwd -x -1 ${DEFAULT_USER}
 
 # enable docker
 systemctl enable docker
