@@ -37,6 +37,13 @@ useradd -m -G sudo,docker ${DEFAULT_USER}
 passwd ${DEFAULT_USER}
 passwd -x -1 ${DEFAULT_USER}
 
+# set aliases
+cat <<EOF > /etc/profile.d/aliases.sh
+alias ll='ls -l --color'
+alias la='ls -la --color'
+EOF
+chmod 644 /etc/profile.d/aliases.sh
+
 # enable docker
 systemctl enable docker
 mkdir -p /etc/docker                                                                                                   
