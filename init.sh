@@ -44,6 +44,10 @@ alias la='ls -la --color'
 EOF
 chmod 644 /etc/profile.d/aliases.sh
 
+# enable ssh agent forwarding
+sed -i -e "s/^AllowAgentForwarding no/AllowAgentForwarding yes/g" /etc/ssh/sshd_config
+systemctl restart sshd
+
 # enable docker
 systemctl enable docker
 mkdir -p /etc/docker                                                                                                   
