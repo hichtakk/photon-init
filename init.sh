@@ -28,9 +28,25 @@ if [ "${DISTRIB_RELEASE}" != "4.0" ]; then
     exit 1
 fi
 
+# disable password expiration
+passwd -x -1 root
+
 # add admin user
+echo "Create user ${DEFAULT_USER}"
 useradd -m -G sudo,docker ${DEFAULT_USER}
 passwd ${DEFAULT_USER}
+passwd -x -1 ${DEFAULT_USER}
+
+# set aliases
+cat <<EOF > /etc/profile.d/aliases.sh
+alias ll='ls -l --color'
+alias la='ls -la --color'
+EOF
+chmod 644 /etc/profile.d/aliases.sh
+
+# enable ssh agent forwarding
+sed -i -e "s/^AllowAgentForwarding no/AllowAgentForwarding yes/g" /etc/ssh/sshd_config
+systemctl restart sshd
 
 # enable docker
 systemctl enable docker
