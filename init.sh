@@ -45,4 +45,8 @@ EOF
 systemctl start docker
 
 # install packages
-tdnf install -y sudo git
+tdnf install -y sudo git tar
+
+# configure aliases
+echo alias ll="ls -l" >> /etc/bash.bashrc
+echo alias la="ls -la" >> /etc/bash.bashrc
