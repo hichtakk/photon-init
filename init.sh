@@ -61,4 +61,4 @@ EOF
 systemctl start docker
 
 # install packages
-tdnf install -y sudo git tar
+tdnf install -y sudo git tar unzip
